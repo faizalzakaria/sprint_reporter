@@ -60,7 +60,7 @@ module SprintReporter
       if epic && @epics && @epics[epic]
         "## #{@epics[epic]}"
       elsif epic
-        "## #{epic}"
+        "## [#{epic}](#{generate_jira_url(epic)})"
       else
         "## Other"
       end
@@ -86,16 +86,16 @@ module SprintReporter
     end
 
     def render_item(item)
-      url = "https://#{@domain}/browse/#{item[:key]}"
-      title = item[:title]
       key = item[:key]
+      title = item[:title]
+      url = generate_jira_url(key)
 
       # Bold the high priority items.
       title = "**#{title}**" if is_highest_priority?(item)
 
       # Render as Markdown
       if @html
-      "- <small>[`#{key}`](#{url})</small> #{title}"
+        "- <small>[`#{key}`](#{url})</small> #{title}"
       else
         "- [`#{key}`](#{url}) #{title}"
       end
@@ -126,6 +126,10 @@ module SprintReporter
     # Checks if the priority of the given +item+ is +'Highest'+.
     def is_highest_priority?(item)
       item && item[:priority] == 'Highest'
+    end
+
+    def generate_jira_url(key)
+      "https://#{@domain}/browse/#{key}"
     end
   end
 end
