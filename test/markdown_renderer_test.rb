@@ -42,7 +42,7 @@ describe 'MarkdownRenderer' do
 
       - [`PR-17`](https://foo.atlassian.net/browse/PR-17) Log in not working
 
-      ## PR-4
+      ## [PR-4](https://foo.atlassian.net/browse/PR-4)
 
       ##### New and updated:
 
@@ -65,7 +65,7 @@ describe 'MarkdownRenderer' do
     ).render
 
     expect(output.strip).must_equal <<~END.strip
-      ## PR-2
+      ## [PR-2](https://foo.atlassian.net/browse/PR-2)
 
       ##### New and updated:
 
@@ -76,14 +76,14 @@ describe 'MarkdownRenderer' do
 
       - [`PR-17`](https://foo.atlassian.net/browse/PR-17) Log in not working
 
-      ## PR-3
+      ## [PR-3](https://foo.atlassian.net/browse/PR-3)
 
       ##### New and updated:
 
       - [`PR-14`](https://foo.atlassian.net/browse/PR-14) Write posts
       - [`PR-15`](https://foo.atlassian.net/browse/PR-15) Make comments
 
-      ## PR-4
+      ## [PR-4](https://foo.atlassian.net/browse/PR-4)
 
       ##### New and updated:
 
